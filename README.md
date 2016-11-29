@@ -1,4 +1,4 @@
-This plugin relies on and extends the [Export](https://github.com/boboldehampsink/export) plugin for CraftCMS, so install that first.
+This plugin relies on and extends the [Export](https://github.com/boboldehampsink/export) plugin for CraftCMS, so install that first. (If [PR 30](https://github.com/boboldehampsink/export/pull/30) to fix missing checkbox fields hasn't been merged yet I suggest you [make that small edit to the services/ExportService.php file](https://github.com/boboldehampsink/export/pull/30/files).)
 
 # ExportWidget CraftCMS Plugin
 CraftCMS plugin to add a quick 'export' widget to the dashboard.
