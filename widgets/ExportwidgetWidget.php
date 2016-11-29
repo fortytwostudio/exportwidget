@@ -3,6 +3,9 @@ namespace Craft;
 
 class ExportwidgetWidget extends BaseWidget
 {
+    // we only want one of these widgets on the dashboard.
+    protected $multi = false;
+
     public function getName()
     {
         return craft()->config->get('widgetTitle', 'exportwidget');
