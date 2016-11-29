@@ -1,0 +1,59 @@
+{#Hide the sidebar nav for the export plugin#}
+{% import "_includes/forms" as forms %}
+
+{% spaceless %}
+  <style>
+    #nav-export {
+
+      display: none;
+    }
+  </style>
+
+  <form method="post" action="" class="centered" accept-charset="utf-8">
+    <input type="hidden" name="action" value="export/download">
+    <input type="hidden" name="export[type]" value="Entry">
+    <input type="hidden" name="export[sort]" value="asc">
+    <input type="hidden" name="export[offset]" value="">
+    <input type="hidden" name="export[limit]" value="">
+    <input type="hidden" name="export[elementvars][section]" value="{{ sectionId }}">
+    <input type="hidden" name="export[elementvars][entrytype]" value="{{ entryTypeId }}">
+    <table>
+      <tr>
+        <th>Field name</th>
+        <th>Export as</th>
+        <th>Include in report</th>
+      </tr>
+
+      {% for field in fields %}
+        <tr>
+          <th>
+            {{ field.name }}
+          </th>
+          <td>
+            <input type="hidden" name="fields[{{ field.handle }}][name]" value="{{ field.name }}">
+            <input type="text" class="text" name="fields[{{ field.handle }}][label]" value="{{ field.name }}">
+          </td>
+          <td>
+            {{ forms.checkboxField({
+              name: "fields[" ~ field.handle ~ "][checked]",
+              checked: 1
+            }) }}
+          </td>
+        </tr>
+      {% endfor %}
+
+
+      <tfoot>
+      <tr>
+        <td colspan="3">
+          <input type="submit" class="btn submit js-btn-export" value="Export">
+          <div class="spinner js-export-spinner hidden"></div>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+
+  </form>
+
+
+{% endspaceless %}
